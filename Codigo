@@ -1,0 +1,1201 @@
+//Función para guardar las hojas de cálculo en variables, obtener la última fila y columna de las tablas.
+function ActualizarPlan() {
+  var libro = SpreadsheetApp.getActiveSpreadsheet();
+  var TMovil = libro.getSheetByName("Copia de TMovil_Cargos");
+  var PlanesDisponibles = libro.getSheetByName("Planes disponibles");
+  TMovilUltimaFila = TMovil.getLastRow();
+  TMovilUltimaColumna = TMovil.getLastColumn();
+  PlanesDisponiblesUltimaFila = PlanesDisponibles.getLastRow();
+  PlanesDisponiblesUltimaColumna = PlanesDisponibles.getLastColumn();
+  
+//Método para recorrer y obtener los datos de cada tabla.
+
+  var DatosOriginales = TMovil.getRange(1,1,TMovilUltimaFila,TMovilUltimaColumna).getValues();
+  //console.log(DatosOriginales[0]);
+  var DatosPlanesDisponibles = PlanesDisponibles.getRange(6,1,PlanesDisponiblesUltimaFila, PlanesDisponiblesUltimaColumna).getValues();
+  for (var i = 0; i < DatosOriginales.length; i++) {
+
+//Métodos para hacer la búsqueda según cada regla, copiar y pegar la info que se requiere.
+
+//Sección 1: Analista      
+
+      if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ANALISTA"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+      } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ANALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+      }else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ANALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ANALISTA"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ANALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ANALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: Auxiliar
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="AUXILIAR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="AUXILIAR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="AUXILIAR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="AUXILIAR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="AUXILIAR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="AUXILIAR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: Apoyo procesos logísticos
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="APOYO"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="APOYO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="APOYO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="APOYO"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="APOYO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="APOYO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: Conductores
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CONDUCTOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CONDUCTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CONDUCTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CONDUCTOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CONDUCTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CONDUCTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: Consultores
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CONSULTOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CONSULTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CONSULTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CONSULTOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CONSULTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: Chef
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="CHEF"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: GESTOR(A)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="GESTOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="GESTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="GESTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="GESTOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="GESTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="GESTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: MENSAJERO
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="MENSAJERO"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="MENSAJERO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="MENSAJERO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="MENSAJERO"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="MENSAJERO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="MENSAJERO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: SOPORTE ADMON *Pendiente porque no había un cargo en la data*
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="SOPORTE ADMON"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="SOPORTE ADMON"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="SOPORTE ADMON"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="SOPORTE ADMON"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="SOPORTE ADMON"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="SOPORTE ADMON"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+//Sección 1: Socio estrategico
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="SOCIO ESTRATEGICO"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="SOCIO ESTRATEGICO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="SOCIO ESTRATEGICO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="SOCIO ESTRATEGICO"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="SOCIO ESTRATEGICO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="SOCIO ESTRATEGICO"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[0][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[0][30]);
+    }
+
+
+//Sección 2: Coordinador(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="COORDINADOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="COORDINADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="COORDINADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="COORDINADOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="COORDINADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="COORDINADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 2: Asesor(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ASESOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ASESOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ASESOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ASESOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ASESOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ASESOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 2: Desarrollador(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="DESARROLLADOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="DESARROLLADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="DESARROLLADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="DESARROLLADOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="DESARROLLADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="DESARROLLADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 2: Especialista
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ESPECIALISTA"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ESPECIALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="ESPECIALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ESPECIALISTA"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ESPECIALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="ESPECIALISTA"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 2: Investigador(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="INVESTIGADOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="INVESTIGADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="INVESTIGADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="INVESTIGADOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="INVESTIGADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="INVESTIGADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 2: Lideres/Coordinador
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- COORDINADOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- COORDINADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- COORDINADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- COORDINADOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- COORDINADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- COORDINADOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 2: Negociador(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="NEGOCIADOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="NEGOCIADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="NEGOCIADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="NEGOCIADOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="NEGOCIADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="NEGOCIADOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 3: Director(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="DIRECTOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="DIRECTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="DIRECTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="DIRECTOR(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="DIRECTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="DIRECTOR(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 3: Ejecutivo Comercial
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="EJECUTIVO(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="EJECUTIVO(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="EJECUTIVO(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="EJECUTIVO(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="EJECUTIVO(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="EJECUTIVO(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 3: Jefe(a)
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="JEFE(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="JEFE(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="JEFE(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="JEFE(A)"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="JEFE(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="JEFE(A)"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 3: Key Account
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="KEY ACCOUNT"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="KEY ACCOUNT"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="KEY ACCOUNT"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="KEY ACCOUNT"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="KEY ACCOUNT"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="KEY ACCOUNT"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 3: Lider/Jefe
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- JEFE"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- JEFE"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- JEFE"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- JEFE"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- JEFE"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- JEFE"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+//Sección 3: Lider/Jefe
+
+     else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- DIRECTOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][6]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- DIRECTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][18]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][16]);
+
+    } else if(DatosOriginales[i][3]=="CLARO" && DatosOriginales[i][11]=="LIDER- DIRECTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][28]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- DIRECTOR"  && DatosOriginales[i][12]=="PLAN COMPAÑIA"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][10]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][8]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- DIRECTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 1"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][21]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][19]);
+
+    } else if(DatosOriginales[i][3]=="MOVISTAR" && DatosOriginales[i][11]=="LIDER- DIRECTOR"  && DatosOriginales[i][12]=="PLAN BENEFICIO 2"){
+       var iSuma = i+1;
+       //console.log(iSuma);
+      var Pegar = TMovil.getRange(iSuma,9);
+      Pegar.setValue(DatosPlanesDisponibles[1][33]);
+      var PegarCantGB = TMovil.getRange(iSuma,6);
+      PegarCantGB.setValue(DatosPlanesDisponibles[1][30]);
+    }
+
+
+
+    }
+
+
+
+  
+}
